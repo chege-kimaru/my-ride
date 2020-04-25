@@ -1,0 +1,90 @@
+<!--== Page Title Area Start ==-->
+<section id="title-area" class="section-padding overlay">
+  <div class="container">
+    <div class="row">
+      <!-- Page Title Start -->
+      <div class="col-lg-12">
+        <div class="section-title  text-center">
+          <h2>Our Cars</h2>
+          <span class="title-line"><i class="fa fa-car"></i></span>
+          <p>Choose a ride from our vastpool of cars.</p>
+        </div>
+      </div>
+      <!-- Page Title End -->
+    </div>
+  </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Car List Area Start ==-->
+<section id="car-list-area" class="section-padding">
+  <div class="container">
+    <div class="row">
+
+      <!-- Car List Content Start -->
+      <div class="col-lg-12">
+        <div class="car-list-content m-t-50">
+          <!-- Single Car Start -->
+          <div class="single-car-wrap" *ngFor="let car of cars">
+            <div class="row">
+              <!-- Single Car Thumbnail -->
+              <div class="col-lg-5">
+                <div *ngIf="car && car.picture && car.picture.picture" class="car-list-thumb"
+                     [ngStyle]="{'background-image':'url(' + car?.picture?.picture + ')'}">
+                </div>
+                <div *ngIf="!car || !car.picture || !car.picture.picture" class="car-list-thumb"
+                     [ngStyle]="{'background-image':'url(assets/img/placeholder.png)'}">>
+                </div>
+              </div>
+              <!-- Single Car Thumbnail -->
+
+              <!-- Single Car Info -->
+              <div class="col-lg-7">
+                <div class="display-table">
+                  <div class="display-table-cell">
+                    <div class="car-list-info">
+                      <h2><a
+                        href="#">{{car?.CarDetail?.Make?.make}} {{car?.CarDetail?.Model?.model}} {{car?.CarDetail?.Series?.series}}</a>
+                      </h2>
+                      <h5>KSH {{car?.price}}/day</h5>
+                      <p>{{car?.CarFeature?.description}}</p>
+                      <ul class="car-info-list">
+                        <li>{{car?.CarDetail?.year}}</li>
+                        <li>{{car?.CarFeature?.colour}}</li>
+                        <li>{{car?.CarDetail?.mileage}}</li>
+                        <li>{{car?.CarDetail?.body_type}}</li>
+                        <li>{{car?.CarDetail?.condition_type}}</li>
+                        <li>{{car?.CarDetail?.transmission_type}}</li>
+                      </ul>
+                      <a appHire [car]="car" class="rent-btn">Hire</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Car info -->
+            </div>
+          </div>
+          <!-- Single Car End -->
+        </div>
+
+        <!-- Page Pagination Start -->
+        <div class="page-pagi">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Page Pagination End -->
+      </div>
+      <!-- Car List Content End -->
+    </div>
+  </div>
+</section>
+<!--== Car List Area End ==-->

@@ -1,0 +1,63 @@
+<!--== Page Title Area Start ==-->
+<section id="title-area" class="section-padding overlay">
+  <div class="container">
+    <div class="row">
+      <!-- Page Title Start -->
+      <div class="col-lg-12">
+        <div class="section-title  text-center">
+          <h2>My Bookings</h2>
+          <span class="title-line"><i class="fa fa-car"></i></span>
+          <p>Check out your hires.</p>
+        </div>
+      </div>
+      <!-- Page Title End -->
+    </div>
+  </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Car List Area Start ==-->
+<section id="car-list-area" class="section-padding">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Car</th>
+        <th>Price</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Location</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hire of hires">
+        <td><img [src]="getCarImage(hire)" style="width: 100px;" alt=""></td>
+        <td>{{getCarName(hire)}}</td>
+        <td>{{((20 / 100) * hire.Car.price) + hire.Car.price}}</td>
+        <td>{{hire.from | date}}</td>
+        <td>{{hire.to | date}}</td>
+        <td>{{hire.location}}</td>
+        <td>{{hire.purpose}}</td>
+        <td>
+          <mat-chip-list>
+            <mat-chip *ngIf="hire?.status != 3" color="primary"
+                      selected>{{setStatus(hire.status)}}</mat-chip>
+            <mat-chip *ngIf="hire?.status == 3 " color="accent"
+                      selected>{{setStatus(hire.status)}}</mat-chip>
+          </mat-chip-list>
+        </td>
+        <td class="action">
+          <button (click)="pay(hire)" *ngIf="hire.status == 2" class="btn btn-outline-success">P
+          </button>
+          <button (click)="cancel(hire)" *ngIf="hire.status == 1" class="btn btn-outline-danger">C
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+.ui.container {
+  margin: 50px 50px;
+}
+
+.step {
+  cursor: pointer;
+}
+
+.ui-widget.ui-widget-content {
+  height: 200px !important;
+}
+
+.ui.styled.accordion .title {
+  padding: 2em 1em;
+  font-size: 1.5em;
+}
+
+#title-area {
+  background-image: url("~src/assets/img/page-title.jpg");
+  background-position: center center;
+  background-size: cover;
+  padding-top: 220px;
+}

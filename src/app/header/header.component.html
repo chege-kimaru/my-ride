@@ -1,0 +1,41 @@
+<!--== Header Area Start ==-->
+<header id="header-area" class="fixed-top">
+  <!--== Header Bottom Start ==-->
+  <div id="header-bottom">
+    <div class="container">
+      <div class="row">
+        <!--== Logo Start ==-->
+        <div class="col-lg-4">
+          <a routerLink="/" class="logo">
+            <!--            <img src="assets/img/logo.png" alt="JSOFT">-->
+            <h1 style="color: white">My-RIDE</h1>
+          </a>
+        </div>
+        <!--== Logo End ==-->
+
+        <!--== Main Menu Start ==-->
+        <div class="col-lg-8 d-xl-block" [hidden]="showNav">
+          <nav class="mainmenu alignright">
+            <ul>
+              <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+              <li routerLinkActive="active"><a routerLink="/cars">Cars</a></li>
+              <li routerLinkActive="active"><a routerLink="/add-car/new">Post Car</a></li>
+              <li *ngIf="!authenticated"><a appSignin>Google Signin</a></li>
+              <li *ngIf="authenticated"><a>Account</a>
+                <ul>
+                  <li routerLinkActive="active"><a routerLink="/account">My Account</a></li>
+                  <li routerLinkActive="active"><a routerLink="/my-cars">My Cars</a></li>
+                  <li routerLinkActive="active"><a routerLink="/my-bookings">My Bookings</a></li>
+                  <li><a (click)="logout()">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!--== Main Menu End ==-->
+      </div>
+    </div>
+  </div>
+  <!--== Header Bottom End ==-->
+</header>
+<!--== Header Area End ==-->

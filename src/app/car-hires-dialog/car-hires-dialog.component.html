@@ -1,0 +1,43 @@
+<h1 mat-dialog-title><img [src]="car.picture"
+                          alt=""> {{car.CarDetail.Make.make}} {{car.CarDetail.Model.model}} {{car.CarDetail.Series.series}}
+  Hires</h1>
+<div mat-dialog-content>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Purpose</th>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hire of hires">
+      <td>{{hire.from | date}}</td>
+      <td>{{hire.to | date}}</td>
+      <td>{{hire.location}}</td>
+      <td>{{hire.purpose}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngIf="hire?.status != 3" color="primary"
+                    selected>{{setStatus(hire.status)}}</mat-chip>
+          <mat-chip *ngIf="hire?.status == 3 " color="accent"
+                    selected>{{setStatus(hire.status)}}</mat-chip>
+        </mat-chip-list>
+      </td>
+      <td class="action">
+        <button (click)="verify(hire)" *ngIf="hire.status == 1" class="btn btn-outline-success">V
+        </button>
+        <button (click)="cancel(hire)" *ngIf="hire.status == 1" class="btn btn-outline-danger">C
+        </button>
+        <button (click)="return(hire)" *ngIf="hire.status == 4" class="btn btn-success">R</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</div>

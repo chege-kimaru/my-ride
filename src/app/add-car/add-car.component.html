@@ -1,0 +1,60 @@
+<!--== Page Title Area Start ==-->
+<section id="title-area" class="section-padding overlay">
+  <div class="container">
+    <div class="row">
+      <!-- Page Title Start -->
+      <div class="col-lg-12">
+        <div class="section-title  text-center">
+          <h2>Manage car</h2>
+          <span class="title-line"><i class="fa fa-car"></i></span>
+          <p>Arr or manage car for hire.</p>
+        </div>
+      </div>
+      <!-- Page Title End -->
+    </div>
+  </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<div class="container">
+  <mat-vertical-stepper #stepper>
+    <mat-step [completed]="user?.account_id">
+      <ng-template matStepLabel>My Details</ng-template>
+      <app-user-form></app-user-form>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [completed]="car?.id">
+      <ng-template matStepLabel>Hire Details</ng-template>
+      <app-hire-details (carUpdate)="carUpdate($event)" [car$]="car$"></app-hire-details>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [completed]="car?.CarDetail?.car_id">
+      <ng-template matStepLabel>Car Details</ng-template>
+      <app-car-details (carUpdate)="carUpdate($event)" [car$]="car$"></app-car-details>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [completed]="car?.CarFeature?.car_id">
+      <ng-template matStepLabel>Car Features</ng-template>
+      <app-car-features (carUpdate)="carUpdate($event)" [car$]="car$"></app-car-features>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Car Pictures</ng-template>
+      <app-car-pictures (carUpdate)="carUpdate($event)" [car$]="car$"></app-car-pictures>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

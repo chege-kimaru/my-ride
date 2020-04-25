@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  BASE_URI: 'http://localhost:3000/api/v1',
+  RAVE_KEY: 'FLWPUBK_TEST-18356ef4f899535216c510626fc8fa77-X'
 };
 
 /*

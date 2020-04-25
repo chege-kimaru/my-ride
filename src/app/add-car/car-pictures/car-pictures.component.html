@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Front</mat-card-title>
+        <mat-card-subtitle><label for="frontPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewFront [src]="imageFront?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('front', frontPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(frontPicture, previewFront, $event)" hidden #frontPicture type="file" id="frontPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Back</mat-card-title>
+        <mat-card-subtitle><label for="backPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewBack [src]="imageBack?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('back', backPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(backPicture, previewBack, $event)" hidden #backPicture type="file" id="backPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Left</mat-card-title>
+        <mat-card-subtitle><label for="leftPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewLeft [src]="imageLeft?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('left', leftPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(leftPicture, previewLeft, $event)" hidden #leftPicture type="file" id="leftPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Right</mat-card-title>
+        <mat-card-subtitle><label for="rightPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewRight [src]="imageRight?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('right', rightPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(rightPicture, previewRight, $event)" hidden #rightPicture type="file" id="rightPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Dashboard</mat-card-title>
+        <mat-card-subtitle><label for="dashboardPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewDashboard [src]="imageDashboard?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('dashboard', dashboardPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(dashboardPicture, previewDashboard, $event)" hidden #dashboardPicture type="file" id="dashboardPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Interior</mat-card-title>
+        <mat-card-subtitle><label for="interiorPicture">Choose New</label></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image #previewInterior [src]="imageInterior?.picture || 'assets/img/placeholder.png'">
+      <mat-card-actions>
+        <button (click)="setImage('interior', interiorPicture)" mat-raised-button color="primary"
+                mat-button>Change
+        </button>
+        <input (change)="onFileSelected(interiorPicture, previewInterior, $event)" hidden #interiorPicture type="file" id="interiorPicture">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

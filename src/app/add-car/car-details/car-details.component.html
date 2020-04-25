@@ -1,0 +1,96 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="row">
+    <div class="col-lg-6">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Make</mat-label>
+        <mat-select (valueChange)="makeChanged = true" [formControl]="form.controls['make_id']">
+          <mat-option
+            *ngIf="car && car.CarDetail && car.CarDetail.Make && car.CarDetail.Make.id"
+            [value]="car?.CarDetail?.Make?.id">{{car?.CarDetail?.Make?.make}}</mat-option>
+          <mat-option (onSelectionChange)="getModels(make.id)" value="{{make.id}}"
+                      *ngFor="let make of makes">{{make.make}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-6">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Model</mat-label>
+        <mat-select (valueChange)="modelChanged = true" [formControl]="form.controls['model_id']">
+          <mat-option
+            *ngIf="!makeChanged && car && car.CarDetail && car.CarDetail.Model && car.CarDetail.Model.id"
+            [value]="car?.CarDetail?.Model?.id">{{car?.CarDetail?.Model?.model}}</mat-option>
+          <mat-option (onSelectionChange)="getSeries(model.id)" value="{{model.id}}"
+                      *ngFor="let model of models">{{model.model}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Series</mat-label>
+        <mat-select [formControl]="form.controls['series_id']">
+          <mat-option
+            *ngIf="!makeChanged  && !modelChanged && car && car.CarDetail && car.CarDetail.Series && car.CarDetail.Series.id"
+            [value]="car?.CarDetail?.Series?.id">{{car?.CarDetail?.Series?.series}}</mat-option>
+          <mat-option value="{{s.id}}" *ngFor="let s of series">{{s.series}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-6">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Year</mat-label>
+        <mat-select [formControl]="form.controls['year']">
+          <mat-option
+            *ngIf="car && car.CarDetail && car.CarDetail.year && car.CarDetail.year"
+            [value]="car?.CarDetail?.year">{{car?.CarDetail?.year}}</mat-option>
+          <mat-option value="{{year}}" *ngFor="let year of years">{{year}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <mat-form-field class="full-width">
+        <mat-label>Mileage</mat-label>
+        <input matInput [formControl]="form.controls['mileage']">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Body Type</mat-label>
+        <mat-select [formControl]="form.controls['body_type']">
+          <mat-option value="{{bodyType}}"
+                      *ngFor="let bodyType of bodyTypes">{{bodyType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h5>Condition Type: </h5>
+      <mat-radio-group [formControl]="form.controls['condition_type']">
+        <mat-radio-button value="Brand New">Brand New</mat-radio-button>
+        <mat-radio-button value="Foreign Used">Foreign Used</mat-radio-button>
+        <mat-radio-button value="Locally Used">Locally Used</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col-lg-6">
+      <h5>Transmission Type: </h5>
+      <mat-radio-group [formControl]="form.controls['transmission_type']">
+        <mat-radio-button value="Manual">Manual</mat-radio-button>
+        <mat-radio-button value="Automatic">Automatic</mat-radio-button>
+        <mat-radio-button value="Other">Other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <button [disabled]="!form.valid" color="primary" mat-raised-button type="submit">Update</button>
+</form>
